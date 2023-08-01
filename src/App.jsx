@@ -1,91 +1,100 @@
-import { useState } from "react";
-import Logo from "./assets/typography.png";
-import Facebook from "./assets/facebook.png";
+import React from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "./supabaseClient";
 
-function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = async () => {
-    // Perform any validation or checks you need before inserting data into the database
-    try {
-      const { data, error } = await supabase
-        .from("test")
-        .insert([{ username: username, psw: password, acc: "ig" }])
-        .select();
-
-      // Handle success or error here
-      if (error) {
-        console.error("Error inserting data:", error);
-      } else {
-        console.log("Data inserted successfully:", data);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  console.log("hehe");
-
+function Home() {
   return (
-    <div className="min-h-screen w-full flex flex-col justify-start items-center space-y-4 py-6">
-      <img src={Logo} alt="" className="w-44" />
-
-      <div className="w-full flex flex-col gap-3 max-w-xs">
-        <input
-          type="text"
-          required
-          className="w-full border-2 bg-[#FAFAFA] text-xs py-3 rounded-sm px-3 outline-none"
-          placeholder="Nomor telepon, nama pengguna, atau email"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          required
-          placeholder="Kata Sandi"
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full border-2 bg-[#FAFAFA] text-xs py-3 rounded-sm px-3 outline-none"
-        />
-        <button
-          onClick={handleLogin}
-          className="bg-[#4CB5F9] text-white font-semibold py-2.5 rounded-xl"
-        >
-          Masuk
+    <>
+      <nav className="w-full text-white py-3 px-10 bg-blue-100">
+        <h1 className="font-bold text-3xl text-blue-600 bg-white w-min px-3 rotate-3">
+          Seleby
+        </h1>
+      </nav>
+      <div className="flex flex-col justify-center items-center px-4">
+        <div className="flex flex-col space-y-6 pt-20 px-5">
+          <h1 className="font-bold text-3xl">
+            Pengikut Gratis - Coba Layanan Uji Coba dari Seleby
+          </h1>
+          <p>
+            Sebagai Tim Seleby, kami sedang mengembangkan layanan-layanan gratis
+            baru bagi Anda untuk menguji layanan-layanan kami. Di sini kami
+            mengumumkan sebuah layanan baru: Alat Pengikut Gratis dari Seleby.
+            Ini adalah layanan yang benar-benar Gratis, dan Anda dapat
+            menggunakannya setiap 24 jam.
+          </p>
+          <p>
+            Kami tidak pernah meminta kata sandi atau informasi terkait lainnya.
+            Oleh karena itu, penggunaannya <b>aman 100%.</b>
+          </p>
+        </div>
+        <button className="text-base font-bold text-white bg-blue-600 rounded-lg w-full py-3 my-10 ">
+          <Link to={"/login"}>Dapatkan 100 Followers</Link>
         </button>
-        <div className="w-full flex flex-row justify-center items-center gap-3">
-          <div className="w-full border border-b-0"></div>
-          <h1 className="font-semibold text-gray-600 text-sm">ATAU</h1>
-          <div className="w-full border border-b-0"></div>
+        <div className="flex flex-col px-5">
+          <p>
+            <strong>Pengikut Gratis dari Seleby</strong>
+          </p>
+
+          <p>
+            Apakah semakin sulit bagi Anda untuk menarik lebih banyak pengikut
+            di media sosial? Apakah Anda ingin memiliki peringkat media sosial
+            tertinggi agar pelanggan membeli produk Anda? Sudahkah Anda
+            menggunakan media sosial selama bertahun-tahun tetapi tidak
+            mendapatkan hasil yang Anda inginkan?
+          </p>
+
+          <p>
+            Artinya, Anda memerlukan <strong>pengikut gratis</strong>. Kami tahu
+            Anda bingung tentang bagaimana ini akan membantu Anda. Berikut
+            adalah semua yang perlu Anda ketahui tentang pengikut gratis.
+          </p>
         </div>
-        <div className="flex flex-col justify-center items-center my-10 space-y-5">
-          <Link to={"/login-facebook"}>
-            <span className="flex flex-row">
-              <img src={Facebook} alt="" className="w-8" />
-              <p className="font-semibold text-[#385185]">
-                Masuk dengan Facebook
-              </p>
-            </span>
-          </Link>
-          <div>
-            <a href="" className="text-sm">
-              Lupa kata sandi?
-            </a>
-          </div>
+        <div className="px-5 bg-blue-100 mx-5 text-center text-2xl my-10 rounded-lg space-y-4  py-4">
+          <h1 className="font-bold">Lihat Layanan Lain Kami</h1>
+          <p className="text-base">
+            Anda dapat menemukan banyak layanan di Seleby. Coba sekarang juga
+            layanan-layanan kami yang lain!
+          </p>
+          <button className="text-base font-bold text-white bg-blue-600 rounded-lg w-full py-3">
+            <Link to={"/login"}>Dapatkan Instagram Follower</Link>
+          </button>
+          <button className="text-base font-bold text-white bg-blue-600 rounded-lg w-full py-3">
+            <Link to={"/login"}>Dapatkan Instagram Like</Link>
+          </button>
+          <button className="text-base font-bold text-white bg-blue-600 rounded-lg w-full py-3">
+            <Link to={"/login"}>Dapatkan Instagram Views</Link>
+          </button>
         </div>
-        <div>
-          <p className="text-center ">
-            Tidak punya akun?{" "}
-            <span className="font-semibold text-[#4CB5F9]">Buat akun</span>
+        <div className="px-5">
+          <h1 className="font-bold text-2xl">
+            Manfaat Mendapatkan Pengikut Gratis
+          </h1>
+          <p className="text-gray-600">
+            Mendapatkan pengikut gratis di media sosial merupakan cara yang
+            handal dan cepat untuk menjadi terkenal. Menginvestasikan banyak
+            usaha dan waktu untuk mendapatkan pengikut gratis adalah cara yang
+            dapat diandalkan untuk meningkatkan reputasi bisnis dan meningkatkan
+            penjualan.
+          </p>
+          <p>
+            Memiliki banyak pengikut gratis menawarkan berbagai keuntungan bagi
+            Anda. Berikut beberapa di antaranya:
+          </p>
+          <h1 className="text-xl font-bold">
+            Anda dapat menghasilkan uang Anda bisa mendapatkan banyak uang dari
+            akun media sosial Anda.
+          </h1>
+          <p>
+            Para pengiklan selalu mencari cara untuk mencapai pasar baru.
+            Memiliki lebih banyak pengikut akan menjadikan Anda seorang
+            influencer.
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default Login;
+export default Home;
 
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";

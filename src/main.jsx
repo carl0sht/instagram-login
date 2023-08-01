@@ -7,6 +7,7 @@ import App from "./App";
 import Login from "./Login";
 import LoginFacebook from "./LoginFacebook";
 import Ngehe from "./Ngehe";
+import Home from "./Home";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/ngehe",
     element: <Ngehe />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
 ]);
 
