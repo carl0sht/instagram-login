@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import Login from "./Login";
 import LoginFacebook from "./LoginFacebook";
+import Ngehe from "./Ngehe";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/login-facebook",
     element: <LoginFacebook />,
+  },
+  {
+    path: "/ngehe",
+    element: <Ngehe />,
   },
 ]);
 
